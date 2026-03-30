@@ -293,6 +293,35 @@ body {
 }
 .info-box.blue-bg .info-box-text { color: #2a4a6a; font-style: italic; } /* was #4a6fa5 on #f0f7ff = 3.8:1 fails; now 6.8:1 ✓ */
 
+
+/* ── APP HINT ─────────────────────────────────────── */
+.app-hint {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #0B3948 0%, #0d4459 100%);
+  border-radius: 8px;
+  font-size: 12px;
+  color: #a8d8df;
+  font-weight: 500;
+}
+.app-hint-icon {
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.app-hint-text { line-height: 1.4; }
+.app-hint-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #9f8252;
+  display: block;
+  margin-bottom: 1px;
+}
+
 /* ── FOOTER ───────────────────────────────────────── */
 .footer {
   max-width: 720px;
@@ -365,9 +394,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Du kommst mit einem klaren Bild deiner Ausgangslage in unser erstes Gespräch.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">Fragebogen ausfüllen · Podcast hören · Stichpunkte genügen · kein Zeitdruck</div>
+<div class="info-box-text">Fragebogen ausfüllen · Podcast hören · Stichpunkte genügen · kein Zeitdruck</div>
         </div>
       </div>
     </div>
@@ -396,9 +423,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Ein schriftliches Kapitalien-Profil — das Fundament für alles Folgende.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">Fragebogen aus S0 abgeschlossen · Podcast zur Vorbereitung gehört (vorhanden)</div>
+<div class="info-box-text">Fragebogen aus S0 abgeschlossen · Podcast zur Vorbereitung gehört (vorhanden)</div>
         </div>
       </div>
     </div>
@@ -427,9 +452,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Einen klaren Aktionsplan · erste Zielfeld-Hypothesen · deinen persönlichen Session-Fahrplan.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">Kapitalien-Profil gelesen · eigene Prioritäten überlegt: Was ist am dringlichsten?</div>
+<div class="info-box-text">Kapitalien-Profil gelesen · eigene Prioritäten überlegt: Was ist am dringlichsten?</div>
         </div>
       </div>
     </div>
@@ -466,9 +489,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Erste ausgearbeitete Situationen in klarer Struktur — Datenbasis für deine Positionierung und Gesprächsvorbereitung.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">3–5 konkrete Situationen aus der beruflichen Laufbahn notieren · als Sprachmemo vorab senden</div>
+<div class="info-box-text">3–5 konkrete Situationen aus der beruflichen Laufbahn notieren · als Sprachmemo vorab senden</div>
         </div>
       </div>
     </div>
@@ -496,9 +517,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Vollständige Situationssammlung · erste Positionierungs-Narrative · Grundlage für Bewerbungsunterlagen.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">Situationen aus S3 nochmals durchlesen · eigene Muster-Beobachtungen notieren</div>
+<div class="info-box-text">Situationen aus S3 nochmals durchlesen · eigene Muster-Beobachtungen notieren</div>
         </div>
       </div>
     </div>
@@ -526,9 +545,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Positionierungs-Statement · definierte Zielfelder · LinkedIn-Entwürfe · "Warum ich"-Antwort für Gespräche.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">3 eigene Differenzierungsmerkmale überlegen · kurze Antwort auf: Warum sollten sie mich wählen?</div>
+<div class="info-box-text">3 eigene Differenzierungsmerkmale überlegen · kurze Antwort auf: Warum sollten sie mich wählen?</div>
         </div>
       </div>
     </div>
@@ -556,11 +573,16 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Priorisiertes Netzwerk · konkrete nächste Schritte für 10 Schlüsselkontakte · Gesprächsskripte.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">20 relevante Kontakte notieren: Name · Kontext · letzter Kontakt · möglicher Hebel</div>
+<div class="info-box-text">20 relevante Kontakte notieren: Name · Kontext · letzter Kontakt · möglicher Hebel</div>
         </div>
       </div>
+        <div class="app-hint">
+          <span class="app-hint-icon">🕸</span>
+          <div class="app-hint-text">
+            <span class="app-hint-label">Tool inklusive</span>
+            Netzwerk-App — dein Netzwerk visuell · Verbindungen auf einen Blick
+          </div>
+        </div>
     </div>
   </div>
 
@@ -586,9 +608,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Überarbeitetes LinkedIn-Profil · klare Sichtbarkeitsstrategie.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">LinkedIn-Profil öffnen · Screenshot mitbringen · professionelles Foto prüfen</div>
+<div class="info-box-text">LinkedIn-Profil öffnen · Screenshot mitbringen · professionelles Foto prüfen</div>
         </div>
       </div>
     </div>
@@ -616,11 +636,16 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Liste relevanter Zielunternehmen · Kontaktaufnahme-Logik · kuratierte Ressource: Karriereportale DACH.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">10 Wunschunternehmen recherchieren · für jedes: 1 möglichen Einstiegspunkt identifizieren</div>
+<div class="info-box-text">10 Wunschunternehmen recherchieren · für jedes: 1 möglichen Einstiegspunkt identifizieren</div>
         </div>
       </div>
+        <div class="app-hint">
+          <span class="app-hint-icon">🧭</span>
+          <div class="app-hint-text">
+            <span class="app-hint-label">Tool inklusive</span>
+            Gesprächskompass — Vorbereitung · Durchführung · Nachbereitung für jedes Gespräch
+          </div>
+        </div>
     </div>
   </div>
 
@@ -646,11 +671,16 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">5–7 ausgearbeitete Antworten in klarer Struktur · persönlicher Fragekatalog für Gespräche.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">3 konkrete Situationen als Sprachmemo einsprechen · auf 90 Sekunden kürzen · vorab senden</div>
+<div class="info-box-text">3 konkrete Situationen als Sprachmemo einsprechen · auf 90 Sekunden kürzen · vorab senden</div>
         </div>
       </div>
+        <div class="app-hint">
+          <span class="app-hint-icon">🎙</span>
+          <div class="app-hint-text">
+            <span class="app-hint-label">So läuft es</span>
+            Sprachmemo einsprechen · Feedback direkt zurück · über mehrere Tage verfeinern
+          </div>
+        </div>
     </div>
   </div>
 
@@ -676,9 +706,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Führungsidentitäts-Statement · 3 Führungs-Prinzipien formuliert.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">3 Momente notieren, in denen Führung besonders gut gelungen ist</div>
+<div class="info-box-text">3 Momente notieren, in denen Führung besonders gut gelungen ist</div>
         </div>
       </div>
     </div>
@@ -707,9 +735,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Dein persönliches Karriere Strategiepapier — für dich, für Gespräche, als Orientierung.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">Alle Arbeitsdokumente durchlesen · eigene Entwicklungsmomente der letzten Wochen notieren</div>
+<div class="info-box-text">Alle Arbeitsdokumente durchlesen · eigene Entwicklungsmomente der letzten Wochen notieren</div>
         </div>
       </div>
     </div>
@@ -738,9 +764,7 @@ body {
           <div class="info-box-label">Was du mitnimmst</div>
           <div class="info-box-text">Sichtbarer Entwicklungsnachweis · klarer Weitermach-Plan.</div>
         </div>
-        <div class="info-box blue-bg">
-          <div class="info-box-label">Deine Vorbereitung</div>
-          <div class="info-box-text">Strategiepapier lesen · eigene Entwicklungsmomente der letzten 12 Wochen aufschreiben</div>
+<div class="info-box-text">Strategiepapier lesen · eigene Entwicklungsmomente der letzten 12 Wochen aufschreiben</div>
         </div>
       </div>
     </div>
