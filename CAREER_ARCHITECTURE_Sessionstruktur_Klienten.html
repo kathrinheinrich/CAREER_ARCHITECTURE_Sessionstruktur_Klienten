@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAREER ARCHITECTURE · Programmübersicht</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teal-dark:  #0B3948;
+  --teal-mid:   #5da7b2;
+  --teal-light: #c8e6ea;
+  --gold:       #9f8252;
+  --gold-light: #f0e6d6;
+  --flora:      #fffcf2;
+  --sand:       #f5f0e8;
+  --greige-d:   #8e897a;
+  --greige-l:   #dbd8ca;
+  --white:      #ffffff;
+  --evid-bg:    #e6f2e6;
+  --evid-fg:    #2d5a2d;
+  --blue-ph:    #f0f7ff;
+  --blue-fg:    #4a6fa5;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--sand);
+  color: var(--teal-dark);
+  min-height: 100vh;
+}
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, #0d4459 65%, var(--teal-dark) 100%);
+  padding: 52px 24px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(159,130,82,.12);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: 80px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: rgba(93,167,178,.08);
+  pointer-events: none;
+}
+.hero-inner { max-width: 720px; margin: 0 auto; position: relative; }
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: .22em;
+  color: #a8d8df;  /* was teal-mid #5da7b2 — on dark bg now 5.1:1 ✓ */
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.hero-title {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 5vw, 40px);
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.hero-sub {
+  font-size: 14px;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.hero-intro {
+  background: rgba(255,255,255,.08);
+  border-left: 3px solid var(--teal-mid);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: rgba(255,252,242,.88);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.evid-bar {
+  background: rgba(230,242,230,.18);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: rgba(230,242,230,.85);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ── STATS ────────────────────────────────────────── */
+.stats {
+  display: flex;
+  background: var(--teal-dark);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.stat {
+  flex: 1;
+  padding: 14px 8px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,.08);
+}
+.stat:last-child { border-right: none; }
+.stat-val {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  color: var(--teal-mid);
+  line-height: 1;
+}
+.stat:nth-child(even) .stat-val { color: var(--gold); }
+.stat-label {
+  font-size: 9px;
+  color: rgba(255,255,255,.72); /* was .38 — fails WCAG; now ~4.5:1 ✓ */
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-top: 4px;
+}
+
+/* ── CONTENT WRAPPER ──────────────────────────────── */
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+/* ── SECTION DIVIDER ──────────────────────────────── */
+.section-divider {
+  background: var(--teal-dark);
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin: 28px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.divider-id {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--teal-mid);
+  white-space: nowrap;
+}
+.divider-text { color: var(--white); }
+.divider-title { font-size: 14px; font-weight: 600; }
+.divider-sub { font-size: 11px; color: rgba(255,255,255,.82); margin-top: 2px; } /* was .55 — fails; now ~5:1 ✓ */
+
+/* ── SESSION CARD ─────────────────────────────────── */
+.session {
+  background: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 16px rgba(11,57,72,.06);
+  border-left: 4px solid var(--teal-mid);
+  transition: box-shadow .2s;
+}
+.session:hover { box-shadow: 0 4px 24px rgba(11,57,72,.11); }
+.session.gold { border-left-color: var(--gold); }
+
+.session-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.session-badge {
+  min-width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--teal-mid);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.session.gold .session-badge { background: var(--gold); }
+.session.variable .session-badge { background: transparent; border: 2px solid var(--teal-mid); }
+.session.variable.gold .session-badge { border-color: var(--gold); }
+.session-badge-id {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: .04em;
+  line-height: 1;
+}
+.session.variable .session-badge-id { color: #0B3948; } /* was teal-mid on transparent white = ~2.8:1; on white bg teal-dark = 8.2:1 ✓ */
+.session.variable.gold .session-badge-id { color: #5a3800; } /* dark on transparent = 8.5:1 ✓ */
+.session-badge-label {
+  font-size: 7px;
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+  margin-top: 2px;
+  letter-spacing: .04em;
+}
+
+.session-meta { flex: 1; }
+.session-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--teal-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.session-sub {
+  font-size: 11px;
+  color: #5a5550; /* was --greige-d #8e897a = 3.5:1, fails; now #5a5550 = 7.2:1 ✓ */
+  margin-top: 3px;
+  line-height: 1.4;
+}
+.session-chevron {
+  font-size: 20px;
+  color: var(--greige-l);
+  flex-shrink: 0;
+  transition: transform .25s;
+  line-height: 1;
+}
+.session.open .session-chevron { transform: rotate(180deg); color: var(--teal-mid); }
+.session.open.gold .session-chevron { color: var(--gold); }
+
+/* Tag */
+.tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--teal-light);
+  color: var(--teal-dark);
+}
+.tag.situativ { background: #f0eadf; color: #7a6040; }
+
+/* Body */
+.session-body {
+  display: none;
+  padding: 0 18px 18px;
+  border-top: 1px solid var(--sand);
+}
+.session.open .session-body { display: block; }
+
+.session-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+@media (max-width: 520px) {
+  .session-grid { grid-template-columns: 1fr; }
+}
+
+.info-box {
+  background: var(--sand);
+  border-radius: 8px;
+  padding: 11px 13px;
+}
+.info-box.gold-bg { background: var(--gold-light); }
+.info-box.blue-bg { background: var(--blue-ph); grid-column: 1 / -1; }
+.info-box-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #0B3948; /* was teal-mid #5da7b2 on sand = 2.8:1 fails; teal-dark = 8.2:1 ✓ */
+  margin-bottom: 6px;
+}
+.session.gold .info-box-label { color: #0B3948; } /* was gold on sand = 2.5:1 fails ✓ */
+.info-box.gold-bg .info-box-label { color: #4a3010; } /* dark on gold-light = 7.1:1 ✓ */
+.info-box.blue-bg .info-box-label { color: #2a4a6a; } /* dark blue on blue-ph = 6.8:1 ✓ */
+.info-box-text {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #333;
+}
+.info-box.blue-bg .info-box-text { color: #2a4a6a; font-style: italic; } /* was #4a6fa5 on #f0f7ff = 3.8:1 fails; now 6.8:1 ✓ */
+
+/* ── FOOTER ───────────────────────────────────────── */
+.footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+.footer-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 18px 20px;
+  border-left: 3px solid var(--teal-mid);
+}
+.footer-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: var(--teal-dark);
+  margin-bottom: 4px;
+}
+.footer-sub { font-size: 12px; color: #5a5550; line-height: 1.6; } /* was greige-d = 3.5:1 fails; now 7.2:1 ✓ */
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Change Maker Karriere Beratung</div>
+    <h1 class="hero-title">CAREER ARCHITECTURE</h1>
+    <p class="hero-sub">12 Wochen · 12 Sessions · 1:1 mit Kathrin Heinrich</p>
+    <div class="hero-intro">
+      Dieser Prozess ist kein Standard-Programm. Er beginnt mit einer präzisen Analyse deiner Ausgangslage — und entwickelt daraus einen individuellen Fahrplan. Was du in welcher Reihenfolge bearbeitest, legen wir gemeinsam in Session 2 fest.
+    </div>
+    <div class="evid-bar">
+      📚 Evidenz: Strukturierte Karrierebegleitung mit individuellem Aktionsplan erhöht die Wahrscheinlichkeit erfolgreicher Übergänge signifikant. (Watkins 2003 · ICF 2023)
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-val">12</div><div class="stat-label">Wochen</div></div>
+  <div class="stat"><div class="stat-val">12</div><div class="stat-label">Sessions</div></div>
+  <div class="stat"><div class="stat-val">1:1</div><div class="stat-label">Format</div></div>
+  <div class="stat"><div class="stat-val">5</div><div class="stat-label">Kapitalien</div></div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- S0 -->
+  <div class="session" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S0</span>
+        <span class="session-badge-label">Start</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Vor dem Start</div>
+        <div class="session-sub">Ca. 45–60 Minuten · eigenständig · vor unserem ersten Gespräch</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Du schaust dir an, wo du gerade wirklich stehst. Was funktioniert in deinem beruflichen Alltag — und was kostet dich mehr als es bringt. Dazu gibt es zwei Listen und einen Erkenntnisschritt.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Du kommst mit einem klaren Bild deiner Ausgangslage in unser erstes Gespräch.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">Fragebogen ausfüllen · Podcast hören · Stichpunkte genügen · kein Zeitdruck</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S1 -->
+  <div class="session gold" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S1</span>
+        <span class="session-badge-label">Fest</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Kapitalien-Analyse</div>
+        <div class="session-sub">90 Minuten · geführtes Gespräch</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Wir sprechen über fünf Kapitalien: was du wirklich kannst, wofür du bekannt bist, wen du kennst, welche Entscheidungsreichweite du hast und was dir Sinn gibt. Ich stelle die Fragen — du redest.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Ein schriftliches Kapitalien-Profil — das Fundament für alles Folgende.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">Fragebogen aus S0 abgeschlossen · Podcast zur Vorbereitung gehört (vorhanden)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S2 -->
+  <div class="session" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S2</span>
+        <span class="session-badge-label">Fest</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Befund + Aktionsplan</div>
+        <div class="session-sub">90 Minuten · gemeinsam entwickeln</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Ich präsentiere dir meinen Befund aus dem Kapitalien-Gespräch. Dann klären wir: Wohin konkret? Welche Zielfelder sind realistisch und attraktiv? Wir entwickeln deinen individuellen Fahrplan für die kommenden Wochen.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Einen klaren Aktionsplan · erste Zielfeld-Hypothesen · deinen persönlichen Session-Fahrplan.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">Kapitalien-Profil gelesen · eigene Prioritäten überlegt: Was ist am dringlichsten?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Variable Header -->
+  <div class="section-divider">
+    <div class="divider-id">S3–S10</div>
+    <div class="divider-text">
+      <div class="divider-title">Individuelle Sessions</div>
+      <div class="divider-sub">Auswahl und Reihenfolge legen wir gemeinsam in S2 fest · nach deinem Profil</div>
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <div class="session gold variable" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S3</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Deine berufliche Biografie — Teil 1 <span class="tag">Fast immer</span></div>
+        <div class="session-sub">90 Minuten · Reflexionsarbeit mit Tiefgang</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Wir arbeiten uns durch konkrete Situationen deiner beruflichen Laufbahn. Was war die Herausforderung? Was hast du getan? Was kam dabei raus? Dieser Schritt ist oft der erhellendste des gesamten Prozesses — weil Muster sichtbar werden, die du längst vergessen hattest.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Erste ausgearbeitete Situationen in klarer Struktur — Datenbasis für deine Positionierung und Gesprächsvorbereitung.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">3–5 konkrete Situationen aus der beruflichen Laufbahn notieren · als Sprachmemo vorab senden</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S4 -->
+  <div class="session variable" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S4</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Deine berufliche Biografie — Teil 2 <span class="tag">Fast immer</span></div>
+        <div class="session-sub">90 Minuten · Muster erkennen · Narrative entwickeln</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Wir vertiefen und erweitern. Mehr Situationen, stärkere Narrative. Am Ende sehen wir, was sich wiederholt — und was das über deine Stärken aussagt. Diese Erkenntnisse fließen direkt in deine Positionierung.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Vollständige Situationssammlung · erste Positionierungs-Narrative · Grundlage für Bewerbungsunterlagen.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">Situationen aus S3 nochmals durchlesen · eigene Muster-Beobachtungen notieren</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="session gold variable" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S5</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Positionierung <span class="tag">Fast immer</span></div>
+        <div class="session-sub">90 Minuten · der Kern deiner Außenwirkung</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Wir beantworten gemeinsam: Warum passiert der nächste Schritt noch nicht — und was verändert sich, wenn du das weißt? Du entwickelst eine klare, unverwechselbare Positionierung auf Basis dessen, was wirklich in dir steckt.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Positionierungs-Statement · definierte Zielfelder · LinkedIn-Entwürfe · "Warum ich"-Antwort für Gespräche.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">3 eigene Differenzierungsmerkmale überlegen · kurze Antwort auf: Warum sollten sie mich wählen?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S6 -->
+  <div class="session variable" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S6</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Netzwerk aktivieren <span class="tag">Fast immer</span></div>
+        <div class="session-sub">90 Minuten · strategisch statt reaktiv</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Wir schauen uns an, wen du kennst — und wie du das Netzwerk so aktivierst, dass es dir wirklich nützt. Mit konkreten Skripten für die Kontaktaufnahme und einem Aktivierungsplan.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Priorisiertes Netzwerk · konkrete nächste Schritte für 10 Schlüsselkontakte · Gesprächsskripte.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">20 relevante Kontakte notieren: Name · Kontext · letzter Kontakt · möglicher Hebel</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S7 -->
+  <div class="session gold variable" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S7</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Sichtbarkeit</div>
+        <div class="session-sub">90 Minuten · auffindbar werden</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Wir überarbeiten dein LinkedIn-Profil auf Basis deiner Positionierung und entwickeln eine Sichtbarkeitsstrategie, die zu dir passt — ohne Selbstvermarktungs-Kitsch.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Überarbeitetes LinkedIn-Profil · klare Sichtbarkeitsstrategie.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">LinkedIn-Profil öffnen · Screenshot mitbringen · professionelles Foto prüfen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S8 -->
+  <div class="session variable" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S8</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Verdeckter Stellenmarkt</div>
+        <div class="session-sub">90 Minuten · wo Stellen entstehen bevor sie ausgeschrieben werden</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">70–80% der Stellen auf deinem Level werden vergeben bevor sie ausgeschrieben sind. Wir entwickeln eine Strategie, wie du in diesen Markt reinkommst — mit konkreten Zielunternehmen und einem Aktivierungsplan.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Liste relevanter Zielunternehmen · Kontaktaufnahme-Logik · kuratierte Ressource: Karriereportale DACH.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">10 Wunschunternehmen recherchieren · für jedes: 1 möglichen Einstiegspunkt identifizieren</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S9 -->
+  <div class="session gold variable" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S9</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Interview Mastery <span class="tag">Fast immer</span></div>
+        <div class="session-sub">In der Session + parallel über mehrere Tage</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Gespräche gewinnen, nicht nur überstehen. Wir erarbeiten deine Antworten auf die wichtigsten Fragen — klar, strukturiert, überzeugend. Parallel übst du: Sprachmemo einschicken, Feedback zurück. Schrittweise Verfeinerung über mehrere Tage.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">5–7 ausgearbeitete Antworten in klarer Struktur · persönlicher Fragekatalog für Gespräche.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">3 konkrete Situationen als Sprachmemo einsprechen · auf 90 Sekunden kürzen · vorab senden</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S10 -->
+  <div class="session variable" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S10</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Führungsidentität <span class="tag situativ">Situativ</span></div>
+        <div class="session-sub">90 Minuten · wer du als Führungskraft wirklich bist</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Wir definieren deine Führungs-DNA — was dich als Führungskraft ausmacht, wie du das artikulierst und wie du es nach außen transportierst. Wann dieser Schritt kommt, hängt von deinem Profil ab.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Führungsidentitäts-Statement · 3 Führungs-Prinzipien formuliert.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">3 Momente notieren, in denen Führung besonders gut gelungen ist</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S11 -->
+  <div class="session gold" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S11</span>
+        <span class="session-badge-label">Fest</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Karriere Strategiepapier</div>
+        <div class="session-sub">Dein Gesamtbild auf maximal 5 Seiten</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Alles was wir erarbeitet haben, kommt zusammen: dein Ausgangspunkt, dein Profil, deine Positionierung, deine Zielfelder und deine nächsten Schritte. Schlank, präzise, wirkungsvoll.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Dein persönliches Karriere Strategiepapier — für dich, für Gespräche, als Orientierung.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">Alle Arbeitsdokumente durchlesen · eigene Entwicklungsmomente der letzten Wochen notieren</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S12 -->
+  <div class="session" onclick="toggle(this)">
+    <button class="session-trigger">
+      <div class="session-badge">
+        <span class="session-badge-id">S12</span>
+        <span class="session-badge-label">Fest</span>
+      </div>
+      <div class="session-meta">
+        <div class="session-title">Abschluss</div>
+        <div class="session-sub">90 Minuten · Entwicklung sehen · in Eigenregie weiter</div>
+      </div>
+      <div class="session-chevron">⌄</div>
+    </button>
+    <div class="session-body">
+      <div class="session-grid">
+        <div class="info-box">
+          <div class="info-box-label">Was passiert</div>
+          <div class="info-box-text">Wir schauen, was sich verändert hat — konkret, messbar, sichtbar. Und wir klären, wie du das Momentum in Eigenregie hältst.</div>
+        </div>
+        <div class="info-box gold-bg">
+          <div class="info-box-label">Was du mitnimmst</div>
+          <div class="info-box-text">Sichtbarer Entwicklungsnachweis · klarer Weitermach-Plan.</div>
+        </div>
+        <div class="info-box blue-bg">
+          <div class="info-box-label">Deine Vorbereitung</div>
+          <div class="info-box-text">Strategiepapier lesen · eigene Entwicklungsmomente der letzten 12 Wochen aufschreiben</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-card">
+    <div class="footer-name">Kathrin Heinrich</div>
+    <div class="footer-sub">Executive Coach & Strategin · Change Maker Karriere Beratung<br>Systemische Beratung · Evidenzbasiert</div>
+  </div>
+</div>
+
+<script>
+function toggle(el) {
+  el.classList.toggle('open');
+}
+
+// Open all on load if embedded small
+document.querySelectorAll('.session').forEach(s => {
+  s.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') return;
+  });
+});
+</script>
+</body>
+</html>
